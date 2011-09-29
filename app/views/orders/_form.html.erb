@@ -1,0 +1,17 @@
+<%= form_for(@order) do |f| %>
+<%= f.hidden_field :realm_id %>
+<div data-role="fieldcontain">
+<%= f.label :name %>
+<%= f.text_field :name %>
+</div>
+<% @options.each do |option| %>
+  <% if option.id == @order.option_id %>
+    <%= f.radio_button :option_id, option.id, :checked => true %>
+  <% else %>
+    <%= f.radio_button :option_id, option.id %>
+  <% end %>
+  <%= f.label :option_id, option, :value => option.id %>
+<% end %>
+<%= f.submit %>
+
+<% end %>

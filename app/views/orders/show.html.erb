@@ -1,0 +1,11 @@
+<div data-role="header">
+  <h1>Step 3/3: Confirmation</h1>
+</div>
+<div data-role="content">
+<h1><%= @order.realm.organization.name %></h1>
+<h2><%= @order.realm.event.name %></h2>
+<ul data-role="listview" data-inset="true">
+  <li><h3>Name</h3><p><%= @order.name %></p></li>
+  <li><h3>Option</h3><p><%= @order.option.name %></p></li>
+</ul>
+</div>

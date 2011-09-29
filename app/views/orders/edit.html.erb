@@ -1,0 +1,9 @@
+<div data-role="header">
+  <h1>Step 2/3: Edit Order</h1>
+  <%= link_to 'Delete', @order, :method => :delete, "data-icon" => "delete", "class" => "ui-btn-right" %>
+</div>
+<div data-role="content">
+<h1><%= @realm.event.name %></h1>
+<h2><%= @realm.organization.name %></h2>
+<%= render 'form' %>
+</div>

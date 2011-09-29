@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/Fixtures.html
+
+one:
+  organization: 
+  event: 
+  coordinator: 
+  token: MyString
+
+two:
+  organization: 
+  event: 
+  coordinator: 
+  token: MyString

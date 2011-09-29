@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/Fixtures.html
+
+one:
+  realm: 
+  name: MyString
+  option: 
+
+two:
+  realm: 
+  name: MyString
+  option: 

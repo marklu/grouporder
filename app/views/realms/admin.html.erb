@@ -1,0 +1,19 @@
+<div data-role="header">
+  <h1>View Orders</h1>
+</div>
+<div data-role="content">
+<h1><%= @realm.event.name %></h1>
+<h2><%= @realm.organization.name %></h2>
+<ul data-role="listview" data-inset="true" data-split-icon="delete">
+<% @orders.each do |order| %>
+  <li><a href="#"><h3><%= order.name %></h3><p><%= order.option %></p></a>
+   <%= link_to 'Delete', order, :method => :delete, "data-icon" => "delete", "class" => "ui-btn-right" %>
+  </li>
+<% end %>
+</ul>
+<ul data-role="listview" data-inset="true">
+<% @optioncounts.each_key do |option| %>
+  <li><h3><%= option.name %></h3><p><%= @optioncounts[option] %></p></li>
+<% end %>
+</ul>
+</div>
