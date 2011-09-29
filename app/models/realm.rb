@@ -13,4 +13,13 @@ class Realm < ActiveRecord::Base
   def orders_with_option(option)
     return Order.where(:realm_id => self.id, :option_id => option.id)
   end
+
+  def option_counts
+    options = Option.where(:event_id => self.event.id)
+    result = {}
+    options.each do |option|
+      result[option] = self.orders_with_option(option).size()
+    end
+    return result
+  end
 end

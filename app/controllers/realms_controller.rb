@@ -14,10 +14,6 @@ class RealmsController < ApplicationController
       session[:realm_admin] = true
     end
     @orders = Order.where(:realm_id => @realm.id)
-    @options = Option.where(:event_id => @realm.event.id)
-    @optioncounts = {}
-    @options.each do |option|
-      @optioncounts[option] = @realm.orders_with_option(option).size()
-    end
+    @optioncounts = @realm.option_counts 
   end
 end

@@ -64,4 +64,7 @@ Shirtorder::Application.routes.draw do
 	  post 'lookup'
 	end
   end
+
+  resources :events do
+  end
 end

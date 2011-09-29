@@ -1,0 +1,21 @@
+<div data-role="header">
+  <h1>View Event</h1>
+</div>
+<div data-role="content">
+<h1><%= @event.name %></h1>
+<ul data-role="listview" data-inset="true">
+<% @realms.each do |realm| %>
+  <li>
+  <%= link_to(realm.admin_url, "data-icon" => "edit", "class" => "ui-btn-right") do%>
+    <h3><%= realm.organization.name %></h3>
+    <ul data-role="listview" data-inset="true">
+      <% optioncounts = realm.option_counts %>
+      <% optioncounts.each_key do |option| %>
+        <li><%= option.name %> <span class="ui-li-count"><%= optioncounts[option] %></span></li>
+      <% end %>
+    </ul>
+  <% end %>
+  </li>
+<% end %>
+</ul>
+</div>
