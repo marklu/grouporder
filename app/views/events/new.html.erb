@@ -1,0 +1,25 @@
+<div data-role="header">
+  <h1>New Event</h1>
+</div>
+<div data-role="content">
+<%= form_for @event do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+  <fieldset data-role="controlgroup">
+    <legend>Participants:</legend>
+    <% for organization in @organizations %>
+      <%= check_box_tag "participants[#{organization.id}]", 1, true %>
+      <%= label_tag "participants[#{organization.id}]", organization.name %>
+    <% end %>
+  </fieldset>
+  <% for i in (1..5) %>
+    <div data-role="fieldcontain">
+      <%= label_tag "options[#{i}][name]", "Option #{i} Name" %>
+      <%= text_field_tag "options[#{i}][name]" %>
+      <%= label_tag "options[#{i}][price]", "Option #{i} Price" %>
+      <%= text_field_tag "options[#{i}][price]" %>
+    </div>
+  <% end %>
+  <%= f.submit %>
+<% end %>
+</div>
