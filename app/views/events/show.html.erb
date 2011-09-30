@@ -18,4 +18,11 @@
   </li>
 <% end %>
 </ul>
+<h2>Total</h2>
+<ul data-role="listview" data-inset="true">
+  <% optioncounts = @event.option_counts %>
+  <% optioncounts.each_key do |option| %>
+    <li><%= option.name %> <span class="ui-li-count"><%= optioncounts[option] %></span></li>
+  <% end %>
+</ul>
 </div>
