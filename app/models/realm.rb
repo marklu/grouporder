@@ -31,4 +31,16 @@ class Realm < ActiveRecord::Base
     end
     return result
   end
+
+  def total
+    options = Option.where(:event_id => self.event.id)
+    result = 0
+    options.each do |option|
+      unless option.price.nil?
+        result += option.price * self.orders_with_option(option).size()
+      end
+    end
+    return result
+  end
+
 end

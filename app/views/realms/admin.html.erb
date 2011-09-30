@@ -10,6 +10,12 @@
   <li><%= option.price.nil? ? option.name : "#{option.name} [#{number_to_currency option.price}]" %> <span class="ui-li-count"><%= @optioncounts[option] %></span></li>
 <% end %>
 </ul>
+<% if @total > 0 %>
+<h3>Invoice</h3>
+<ul data-role="listview" data-inset="true">
+<li>Total <span class="ui-li-count"><%= number_to_currency @total %></span></li>
+</ul>
+<% end %>
 <h3>Orders</h3>
 <%= link_to 'Place Order', @realm.token_url, "data-role" => "button", "data-icon" => "plus", "data-iconpos" => "right" %> 
 <ul data-role="listview" data-inset="true" data-split-icon="delete">
