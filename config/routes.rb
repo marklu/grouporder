@@ -66,5 +66,9 @@ Shirtorder::Application.routes.draw do
   end
 
   resources :events
-  resources :organizations
+  resources :organizations do
+    collection do
+      post 'add_multiple'
+    end
+  end
 end

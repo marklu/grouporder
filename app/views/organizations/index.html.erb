@@ -9,4 +9,10 @@
   <%= link_to "Delete", organization, :method => "delete", "data-icon" => "delete", :class => "ui-btn-right" %></li>
 <% end %>
 </ul>
+<h2>Add Organizations</h2>
+<%= form_tag add_multiple_organizations_path, :method => "post" do %>
+  <%= label_tag :organizations, "Organizations (one per line)" %>
+  <%= text_area_tag :organizations, nil, :size => "40x10" %>
+  <%= submit_tag "Add Organizations" %>
+<% end %>
 </div>
