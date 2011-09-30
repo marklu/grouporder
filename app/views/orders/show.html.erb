@@ -1,5 +1,6 @@
 <div data-role="header">
   <h1>Step 3/3: Confirmation</h1>
+  <%= link_to "Edit", edit_order_path(@order), "data-icon" => "back", :class => "ui-btn-left", "data-direction" => "reverse" %>
 </div>
 <div data-role="content">
 <h1><%= @order.realm.organization.name %></h1>
