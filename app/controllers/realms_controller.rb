@@ -9,11 +9,11 @@ class RealmsController < ApplicationController
 
   def admin
     @realm = Realm.find_by_admin_token(params[:admin_token])
-    if(@realm)
+    unless @realm.nil?
       session[:realm_id] = @realm.id
       session[:realm_admin] = true
+      @orders = Order.where(:realm_id => @realm.id)
+      @optioncounts = @realm.option_counts 
     end
-    @orders = Order.where(:realm_id => @realm.id)
-    @optioncounts = @realm.option_counts 
   end
 end

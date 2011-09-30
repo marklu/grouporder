@@ -7,6 +7,6 @@
 <h2><%= @order.realm.event.name %></h2>
 <ul data-role="listview" data-inset="true">
   <li><h3>Name</h3><p><%= @order.name %></p></li>
-  <li><h3>Option</h3><p><%= @order.option.name %></p></li>
+  <li><h3>Option</h3><p><%= @order.option.price.nil? ? @order.option.name : "#{@order.option.name} [#{number_to_currency(@order.option.price)}]" %></p></li>
 </ul>
 </div>

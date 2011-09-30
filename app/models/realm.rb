@@ -4,10 +4,10 @@ class Realm < ActiveRecord::Base
 
   before_create do
     if self.token.nil?
-      self.token = SecureRandom.hex(8)
+      self.token = SecureRandom.hex(8).force_encoding('UTF-8')
     end
     if self.admin_token.nil?
-      self.admin_token = SecureRandom.hex(8)
+      self.admin_token = SecureRandom.hex(8).force_encoding('UTF-8')
     end
   end
 

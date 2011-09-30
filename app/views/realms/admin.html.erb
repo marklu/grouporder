@@ -7,7 +7,7 @@
 <h3>Totals</h3>
 <ul data-role="listview" data-inset="true">
 <% @optioncounts.each_key do |option| %>
-  <li><%= option.name %> <span class="ui-li-count"><%= @optioncounts[option] %></span></li>
+  <li><%= option.price.nil? ? option.name : "#{option.name} [#{number_to_currency option.price}]" %> <span class="ui-li-count"><%= @optioncounts[option] %></span></li>
 <% end %>
 </ul>
 <h3>Orders</h3>

@@ -19,7 +19,7 @@ class EventsController < ApplicationController
     @options.each_key do |n|
       option = @options[n]
       unless option[:name].empty?
-        Option.create(:event => @event, :name => option[:name])
+        Option.create(:event => @event, :name => option[:name], :price => option[:price])
       end
     end
     redirect_to @event
