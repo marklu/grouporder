@@ -11,7 +11,7 @@
 <% end %>
 </ul>
 <h3>Orders</h3>
-<%= link_to 'New Order', @realm.token_url, "data-role" => "button", "data-icon" => "plus", "data-iconpos" => "right" %> 
+<%= link_to 'Place Order', @realm.token_url, "data-role" => "button", "data-icon" => "plus", "data-iconpos" => "right" %> 
 <ul data-role="listview" data-inset="true" data-split-icon="delete">
 <% @orders.each do |order| %>
   <li><a href="#"><h3><%= order.name %></h3><p><%= order.option %></p></a>
