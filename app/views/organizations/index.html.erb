@@ -1,0 +1,12 @@
+<div data-role="header">
+  <h1>Organizations</h1>
+</div>
+<div data-role="content">
+<h1>Organizations</h1>
+<ul data-role="listview" data-inset="true" data-split-icon="delete">
+<% @organizations.each do |organization| %>
+  <li><a href="#"><%= organization.name %></a>
+  <%= link_to "Delete", organization, :method => "delete", "data-icon" => "delete", :class => "ui-btn-right" %></li>
+<% end %>
+</ul>
+</div>

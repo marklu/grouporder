@@ -65,6 +65,6 @@ Shirtorder::Application.routes.draw do
 	end
   end
 
-  resources :events do
-  end
+  resources :events
+  resources :organizations
 end
