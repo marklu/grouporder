@@ -48,4 +48,8 @@ class Realm < ActiveRecord::Base
     return payments.sum :amount
   end
 
+  def balance
+    return total_cost - total_paid
+  end
+
 end

@@ -14,7 +14,11 @@
         <li><%= option.name %> <span class="ui-li-count"><%= optioncounts[option] %></span></li>
       <% end %>
     </ul>
-    <p>Total: <%= number_to_currency realm.total_cost %></p>
+    <ul data-role="listview" data-inset="true" data-theme="b">
+      <li>Cost <span class="ui-li-count"><%= number_to_currency realm.total_cost %></span></li>
+      <li>Paid <span class="ui-li-count"><%= number_to_currency realm.total_paid %></span></li>
+      <li>Balance <span class="ui-li-count"><%= number_to_currency realm.balance %></span></li>
+    </ul>
   <% end %>
   </li>
 <% end %>

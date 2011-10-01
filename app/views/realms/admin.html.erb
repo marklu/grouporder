@@ -10,13 +10,6 @@
   <li><%= option.price.nil? ? option.name : "#{option.name} [#{number_to_currency option.price}]" %> <span class="ui-li-count"><%= @optioncounts[option] %></span></li>
 <% end %>
 </ul>
-<% if @total > 0 %>
-<h3>Invoice</h3>
-<ul data-role="listview" data-inset="true">
-<li>Total <span class="ui-li-count"><%= number_to_currency @total %></span></li>
-<li>Paid <span class="ui-li-count"><%= number_to_currency @paid %></span></li>
-</ul>
-<% end %>
 <h3>Orders</h3>
 <%= link_to 'Place Order', @realm.token_url, "data-role" => "button", "data-icon" => "plus", "data-iconpos" => "right" %> 
 <ul data-role="listview" data-inset="true" data-split-icon="delete">
@@ -26,4 +19,22 @@
   </li>
 <% end %>
 </ul>
+<% if @total > 0 %>
+<h3>Invoice</h3>
+<ul data-role="listview" data-inset="true">
+<li>Total <span class="ui-li-count"><%= number_to_currency @total %></span></li>
+<li>Paid <span class="ui-li-count"><%= number_to_currency @paid %></span></li>
+<li>Balance <span class="ui-li-count"><%= number_to_currency @balance %></span></li>
+</ul>
+<% end %>
+<h3>Payments</h3>
+<% if @payments.empty? %>
+  <p>No payments received.</p>
+<% else %>
+  <ul data-role="listview" data-inset="true">
+  <% @payments.each do |payment| %>
+    <li><%= payment.comment %> (<%= payment.created_at.in_time_zone("Pacific Time (US & Canada)").strftime "%m/%d/%Y %I:%M%p" %>) <span class="ui-li-count"><%= number_to_currency payment.amount %></span></li>
+  <% end %>
+  </ul>
+<% end %>
 </div>

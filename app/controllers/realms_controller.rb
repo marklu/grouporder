@@ -16,6 +16,8 @@ class RealmsController < ApplicationController
       @optioncounts = @realm.option_counts
       @total = @realm.total_cost
       @paid = @realm.total_paid
+      @balance = @realm.balance
+      @payments = @realm.payments
     end
   end
 end
