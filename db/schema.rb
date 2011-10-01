@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110930221348) do
+ActiveRecord::Schema.define(:version => 20111001093915) do
 
   create_table "events", :force => true do |t|
     t.string   "name"
@@ -45,6 +45,16 @@ ActiveRecord::Schema.define(:version => 20110930221348) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "payments", :force => true do |t|
+    t.integer  "realm_id"
+    t.decimal  "amount",     :precision => 10, :scale => 2
+    t.string   "comment"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "payments", ["realm_id"], :name => "index_payments_on_realm_id"
 
   create_table "realms", :force => true do |t|
     t.integer  "organization_id"

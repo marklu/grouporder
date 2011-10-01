@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/Fixtures.html
+
+one:
+  realm: 
+  amount: 9.99
+  comment: MyString
+
+two:
+  realm: 
+  amount: 9.99
+  comment: MyString

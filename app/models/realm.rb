@@ -1,6 +1,7 @@
 class Realm < ActiveRecord::Base
   belongs_to :organization
   belongs_to :event
+  has_many :payments
 
   before_create do
     if self.token.nil?
@@ -32,8 +33,8 @@ class Realm < ActiveRecord::Base
     return result
   end
 
-  def total
-    options = Option.where(:event_id => self.event.id)
+  def total_cost
+    options = event.options
     result = 0
     options.each do |option|
       unless option.price.nil?
@@ -41,6 +42,10 @@ class Realm < ActiveRecord::Base
       end
     end
     return result
+  end
+
+  def total_paid
+    return payments.sum :amount
   end
 
 end

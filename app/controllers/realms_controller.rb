@@ -14,7 +14,8 @@ class RealmsController < ApplicationController
       session[:realm_admin] = true
       @orders = Order.where(:realm_id => @realm.id)
       @optioncounts = @realm.option_counts
-      @total = @realm.total
+      @total = @realm.total_cost
+      @paid = @realm.total_paid
     end
   end
 end
