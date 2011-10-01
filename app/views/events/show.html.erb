@@ -19,6 +19,10 @@
       <li>Paid <span class="ui-li-count"><%= number_to_currency realm.total_paid %></span></li>
       <li>Balance <span class="ui-li-count"><%= number_to_currency realm.balance %></span></li>
     </ul>
+    <ul data-role="listview" data-inset="true" data-theme="d">
+      <li><%= label_tag "adminlink", "Admin Link" %><%= text_field_tag "adminlink", request.protocol + request.host_with_port + realm.admin_url, :readonly => true %></li>
+      <li><%= label_tag "orderlink", "Order Link" %><%= text_field_tag "orderlink", request.protocol + request.host_with_port + realm.token_url, :readonly => true %></li>
+    </ul>
   <% end %>
   </li>
 <% end %>
