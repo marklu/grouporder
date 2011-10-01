@@ -61,4 +61,9 @@ class OrdersController < ApplicationController
     @order.update_attributes(params[:order])
     redirect_to @order
   end
+
+  def pay
+    @order = Order.find(params[:id])
+    redirect_to @order.pay_url
+  end
 end

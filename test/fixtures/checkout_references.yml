@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/Fixtures.html
+
+one:
+  realm: 
+  comment: MyText
+  checkout_id: 1
+
+two:
+  realm: 
+  comment: MyText
+  checkout_id: 1

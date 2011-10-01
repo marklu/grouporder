@@ -60,6 +60,9 @@ Shirtorder::Application.routes.draw do
   match 'a/:admin_token' => 'realms#admin'
   
   resources :orders do
+    member do
+      get 'pay'
+    end
     collection do
 	  post 'lookup'
 	end

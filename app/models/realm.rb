@@ -52,4 +52,12 @@ class Realm < ActiveRecord::Base
     return total_cost - total_paid
   end
 
+  def pay_url(amount)
+    amount ||= balance
+    headers = { "Authorization" => "Bearer #{WEPAY[:access_token]}" }
+    query = { :account_id => WEPAY[:account], :short_description => realm.event.name, :type => "GOODS", :amount => amount }
+    response = HTTParty.get "#{WEPAY[:api_base]}/checkout/create", :headers => headers, :query => query
+    CheckoutReference.create(:realm => realm, :comment => organization.name, :checkout_id => response["checkout_id"])
+    return response["checkout_uri"]
+  end
 end

@@ -11,7 +11,17 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111001093915) do
+ActiveRecord::Schema.define(:version => 20111001132508) do
+
+  create_table "checkout_references", :force => true do |t|
+    t.integer  "realm_id"
+    t.text     "comment"
+    t.integer  "checkout_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "checkout_references", ["realm_id"], :name => "index_checkout_references_on_realm_id"
 
   create_table "events", :force => true do |t|
     t.string   "name"
