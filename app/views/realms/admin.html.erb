@@ -29,7 +29,7 @@
 <%= form_tag @realm.pay_url, :method => :post, "data-ajax" => "false" do %>
   <div data-role="fieldcontain">
     <%= label_tag 'amount', 'Payment Amount' %>
-    <%= text_field_tag 'amount' %>
+    <%= text_field_tag 'amount', number_with_precision(@balance, :precision => 2) %>
   </div>
   <%= submit_tag "Make Payment" %>
 <% end %>
