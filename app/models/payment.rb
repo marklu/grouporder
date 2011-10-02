@@ -38,6 +38,7 @@ class Payment < ActiveRecord::Base
               :short_description => "#{realm.event.name}, #{description}",
               :type => "GOODS",
               :callback_uri => args[:callback_uri],
+              :redirect_uri => args[:redirect_uri],
               :amount => amount }
     response = HTTParty.get "#{WEPAY[:api_base]}/checkout/create", :headers => headers, :query => query
     result = Payment.create :realm => realm, :order => order, :description => "Pending payment for #{description}", :amount => 0.0, :checkout_id => response["checkout_id"]

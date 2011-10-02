@@ -60,6 +60,7 @@ Shirtorder::Application.routes.draw do
   match 'a/:admin_token' => 'realms#admin'
  
   match 'payments/confirm' => 'payments#confirm' 
+  match 'payments/thanks' => 'payments#thanks'
 
   resources :orders do
     member do
