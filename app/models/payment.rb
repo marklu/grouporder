@@ -4,18 +4,19 @@ class Payment < ActiveRecord::Base
 
   def confirm
     headers = { "Authorization" => "Bearer #{WEPAY[:access_token]}" }
-    query = { :account_id => realm.event.wepay_account, :checkout_id => checkout_id }
+    query = { :checkout_id => checkout_id }
     response = HTTParty.get "#{WEPAY[:api_base]}/checkout", :headers => headers, :query => query
-    if response["state"] == "Captured"
+    print response
+    if response["state"] == "captured"
       amount = response["amount"]
       description = "Online payment for #{subject}"
-    elsif response["state"] == "Refunded"
+    elsif response["state"] == "refunded"
       amount = 0.00
       description = "Refunded payment for #{subject} (#{reponse["amount"]})"
-    elsif response["state"] == "Charged back"
+    elsif response["state"] == "charged back"
       amount = 0.00
       description = "Chargeback for #{subject} (#{response["amount"]})"
-    elsif response["state"] == "Cancelled" or response["state"] == "Failed"
+    elsif response["state"] == "cancelled" or response["state"] == "failed"
       self.delete
     end
   end
