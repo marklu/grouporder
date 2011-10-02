@@ -28,7 +28,7 @@ class Payment < ActiveRecord::Base
     description = realm.organization.name
     unless order.nil?
       amount = order.option.price
-      description = order.option.name
+      description = order.name
     end
     unless args[:amount].nil?
       amount = args[:amount]

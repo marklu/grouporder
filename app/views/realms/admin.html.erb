@@ -26,6 +26,13 @@
 <li>Paid <span class="ui-li-count"><%= number_to_currency @paid %></span></li>
 <li>Balance <span class="ui-li-count"><%= number_to_currency @balance %></span></li>
 </ul>
+<%= form_tag @realm.pay_url, :method => :post, "data-ajax" => "false" do %>
+  <div data-role="fieldcontain">
+    <%= label_tag 'amount', 'Payment Amount' %>
+    <%= text_field_tag 'amount' %>
+  </div>
+  <%= submit_tag "Make Payment" %>
+<% end %>
 <% end %>
 <h3>Payments</h3>
 <% if @payments.empty? %>

@@ -58,6 +58,7 @@ Shirtorder::Application.routes.draw do
 
   match 'o/:token' => 'realms#order'
   match 'a/:admin_token' => 'realms#admin'
+  match 'a/:admin_token/pay' => 'realms#pay'
  
   match 'payments/confirm' => 'payments#confirm' 
   match 'payments/thanks' => 'payments#thanks'

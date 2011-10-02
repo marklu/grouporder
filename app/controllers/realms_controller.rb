@@ -20,4 +20,10 @@ class RealmsController < ApplicationController
       @payments = @realm.payments
     end
   end
+
+  def pay
+    @realm = Realm.find_by_admin_token(params[:admin_token])
+    @amount = params[:amount]
+    redirect_to Payment.generate_checkout :realm => @realm, :amount => @amount, :callback_uri => url_for(:action => "confirm", :controller => "payments", :only_path => false), :redirect_uri => url_for(:action => "thanks", :controller => "payments", :only_path => false)
+  end
 end
