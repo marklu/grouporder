@@ -5,5 +5,6 @@ class PaymentsController < ApplicationController
   end
 
   def thanks
+    @checkout_id = params[:checkout_id]
   end
 end
