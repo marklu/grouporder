@@ -1,7 +1,7 @@
 class EventsController < ApplicationController
   def show
     @event = Event.find(params[:id])
-    @realms = Realm.where(:event_id => @event.id)
+    @realms = Realm.where(:event_id => @event.id).includes("organization").order("organizations.name ASC")
   end  
 
   def new

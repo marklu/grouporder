@@ -12,7 +12,7 @@ class RealmsController < ApplicationController
     unless @realm.nil?
       session[:realm_id] = @realm.id
       session[:realm_admin] = true
-      @orders = Order.where(:realm_id => @realm.id)
+      @orders = Order.where(:realm_id => @realm.id).order("name ASC")
       @optioncounts = @realm.option_counts
       @total = @realm.total_cost
       @paid = @realm.total_paid
