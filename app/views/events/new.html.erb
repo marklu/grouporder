@@ -20,6 +20,8 @@
       <%= text_field_tag "options[#{i}][price]" %>
     </div>
   <% end %>
+  <%= f.label :wepay_account, "WePay Account Number" %>
+  <%= f.text_field :wepay_account %>
   <%= f.submit %>
 <% end %>
 </div>

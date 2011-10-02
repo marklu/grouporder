@@ -33,7 +33,7 @@
 <% else %>
   <ul data-role="listview" data-inset="true">
   <% @payments.each do |payment| %>
-    <li><%= payment.comment %> (<%= payment.created_at.in_time_zone("Pacific Time (US & Canada)").strftime "%m/%d/%Y %I:%M%p" %>) <span class="ui-li-count"><%= number_to_currency payment.amount %></span></li>
+    <li><%= payment.description %> (<%= payment.created_at.in_time_zone("Pacific Time (US & Canada)").strftime "%m/%d/%Y %I:%M%p" %>) <span class="ui-li-count"><%= number_to_currency payment.amount %></span></li>
   <% end %>
   </ul>
 <% end %>

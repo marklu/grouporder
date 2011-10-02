@@ -64,6 +64,6 @@ class OrdersController < ApplicationController
 
   def pay
     @order = Order.find(params[:id])
-    redirect_to @order.pay_url
+    redirect_to Payment.generate_checkout :order => @order, :callback_uri => url_for(:action => "confirm", :controller => "payments", :only_path => false)
   end
 end
