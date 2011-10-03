@@ -20,19 +20,19 @@
 <% end %>
 </ul>
 <% if @total > 0 %>
-<h3>Invoice</h3>
-<ul data-role="listview" data-inset="true">
-<li>Total <span class="ui-li-count"><%= number_to_currency @total %></span></li>
-<li>Paid <span class="ui-li-count"><%= number_to_currency @paid %></span></li>
-<li>Balance <span class="ui-li-count"><%= number_to_currency @balance %></span></li>
-</ul>
-<%= form_tag @realm.pay_url, :method => :post, "data-ajax" => "false" do %>
-  <div data-role="fieldcontain">
-    <%= label_tag 'amount', 'Payment Amount' %>
-    <%= text_field_tag 'amount', number_with_precision(@balance, :precision => 2) %>
-  </div>
-  <%= submit_tag "Make Payment" %>
-<% end %>
+  <h3>Invoice</h3>
+  <ul data-role="listview" data-inset="true">
+    <li>Total <span class="ui-li-count"><%= number_to_currency @total %></span></li>
+    <li>Paid <span class="ui-li-count"><%= number_to_currency @paid %></span></li>
+    <li>Balance <span class="ui-li-count"><%= number_to_currency @balance %></span></li>
+  </ul>
+  <%= form_tag @realm.pay_url, :method => :post, "data-ajax" => "false" do %>
+    <div data-role="fieldcontain">
+      <%= label_tag 'amount', 'Payment Amount' %>
+      <%= text_field_tag 'amount', number_with_precision(@balance, :precision => 2) %>
+    </div>
+    <%= submit_tag "Make Payment" %>
+  <% end %>
 <% end %>
 <h3>Payments</h3>
 <% if @payments.empty? %>
@@ -43,5 +43,17 @@
     <li><%= payment.description %> (<%= payment.created_at.in_time_zone("Pacific Time (US & Canada)").strftime "%m/%d/%Y %I:%M%p" %>) <span class="ui-li-count"><%= number_to_currency payment.amount %></span></li>
   <% end %>
   </ul>
+<% end %>
+<% if @display_credit %>
+  <h3>Add Credit [Admin Only]</h3>
+  <%= form_tag @realm.credit_url, :method => :post, "data-ajax" => "false" do %>
+    <div data-role="fieldcontain">
+      <%= label_tag 'description', 'Description' %>
+      <%= text_field_tag 'description' %>
+      <%= label_tag 'amount', 'Amount' %>
+      <%= text_field_tag 'amount' %>
+    </div>
+    <%= submit_tag "Input Payment Credit" %>
+  <% end %>
 <% end %>
 </div>

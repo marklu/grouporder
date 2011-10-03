@@ -11,13 +11,24 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111002104219) do
+ActiveRecord::Schema.define(:version => 20111003035654) do
+
+  create_table "checkout_references", :force => true do |t|
+    t.integer  "realm_id"
+    t.text     "comment"
+    t.integer  "checkout_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "checkout_references", ["realm_id"], :name => "index_checkout_references_on_realm_id"
 
   create_table "events", :force => true do |t|
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "wepay_account"
+    t.string   "password"
   end
 
   create_table "options", :force => true do |t|
@@ -71,5 +82,14 @@ ActiveRecord::Schema.define(:version => 20111002104219) do
 
   add_index "realms", ["event_id"], :name => "index_realms_on_event_id"
   add_index "realms", ["organization_id"], :name => "index_realms_on_organization_id"
+
+  create_table "users", :force => true do |t|
+    t.string   "login",             :null => false
+    t.string   "crypted_password"
+    t.string   "password_salt"
+    t.string   "persistence_token"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
 end

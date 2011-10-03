@@ -59,6 +59,7 @@ Shirtorder::Application.routes.draw do
   match 'o/:token' => 'realms#order'
   match 'a/:admin_token' => 'realms#admin'
   match 'a/:admin_token/pay' => 'realms#pay'
+  match 'a/:admin_token/credit' => 'realms#credit'
  
   match 'payments/confirm' => 'payments#confirm' 
   match 'payments/thanks' => 'payments#thanks'
@@ -72,7 +73,13 @@ Shirtorder::Application.routes.draw do
 	end
   end
 
-  resources :events
+  resources :events do
+    member do
+      get 'auth'
+      post 'auth'
+    end
+  end
+
   resources :organizations do
     collection do
       post 'add_multiple'

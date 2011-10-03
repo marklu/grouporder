@@ -8,17 +8,23 @@
   <li>
   <%= link_to(realm.admin_url, "data-icon" => "edit", "class" => "ui-btn-right") do%>
     <h3><%= realm.organization.name %></h3>
+    <div class="ui-grid-a">
+    <div class="ui-block-a"><div class="ui-bar">
     <ul data-role="listview" data-inset="true">
       <% optioncounts = realm.option_counts %>
       <% optioncounts.each_key do |option| %>
         <li><%= option.name %> <span class="ui-li-count"><%= optioncounts[option] %></span></li>
       <% end %>
     </ul>
+    </div></div>
+    <div class="ui-block-b"><div class="ui-bar">
     <ul data-role="listview" data-inset="true" data-theme="b">
       <li>Cost <span class="ui-li-count"><%= number_to_currency realm.total_cost %></span></li>
       <li>Paid <span class="ui-li-count"><%= number_to_currency realm.total_paid %></span></li>
       <li>Balance <span class="ui-li-count"><%= number_to_currency realm.balance %></span></li>
     </ul>
+    </div></div>
+    </div>
     <ul data-role="listview" data-inset="true" data-theme="d">
       <li><%= label_tag "adminlink", "Admin Link" %><%= text_field_tag "adminlink", request.protocol + request.host_with_port + realm.admin_url, :readonly => true %></li>
       <li><%= label_tag "orderlink", "Order Link" %><%= text_field_tag "orderlink", request.protocol + request.host_with_port + realm.token_url, :readonly => true %></li>

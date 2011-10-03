@@ -1,0 +1,13 @@
+<div data-role="header">
+  <h1>Event Authentication</h1>
+</div>
+<div data-role="content">
+<h1><%= @event.name %></h1>
+<%= form_tag auth_event_path(@event.id), :action => :post, "data-ajax" => "false" do %>
+  <div data-role="fieldcontain">
+    <%= label_tag :password, "Password" %>
+    <%= password_field_tag :password  %>
+  </div>
+  <%= submit_tag "Authenticate" %>
+<% end %>
+</div>

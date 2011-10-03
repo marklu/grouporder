@@ -19,6 +19,10 @@ class Realm < ActiveRecord::Base
   def admin_url
     return '/a/' + admin_token
   end
+  
+  def credit_url
+    return admin_url + '/credit'
+  end
 
   def pay_url
     return admin_url + '/pay'
