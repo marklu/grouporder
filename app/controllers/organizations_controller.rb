@@ -5,7 +5,7 @@ class OrganizationsController < ApplicationController
   def add_multiple
     @organization_names = params[:organizations].split("\n")
     for name in @organization_names do
-      Organization.find_or_create_by_name(name)
+      Organization.find_or_create_by_name(name.strip)
     end
     redirect_to organizations_path
   end

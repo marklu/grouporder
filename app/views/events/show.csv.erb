@@ -1,0 +1,24 @@
+<% 
+result = CSV.generate(:force_quotes => true) do |csv|
+
+  options = @event.options
+  csv << ["Organization"] + options + ["AdminLink", "OrderLink", "Cost", "Paid", "Balance"]
+
+  @realms.each do |realm|
+    row = []
+    row << realm.organization.name
+    option_counts = realm.option_counts
+    options.each do |option|
+      row << option_counts[option]
+    end
+    row << request.protocol + request.host_with_port + realm.admin_url
+    row << request.protocol + request.host_with_port + realm.token_url
+    row << realm.total_cost
+    row << realm.total_paid
+    row << realm.balance
+    csv << row
+  end
+
+end
+%>
+<%= raw(result) %>

@@ -5,6 +5,11 @@ class EventsController < ApplicationController
       redirect_to auth_event_path(@event.id)
     end
     @realms = Realm.where(:event_id => @event.id).includes("organization").order("organizations.name ASC")
+
+    respond_to do |format|
+      format.html
+      format.csv
+    end
   end  
 
   def new
