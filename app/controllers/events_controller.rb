@@ -6,10 +6,10 @@ class EventsController < ApplicationController
     end
     @realms = Realm.where(:event_id => @event.id).includes("organization").order("organizations.name ASC")
 
-    respond_to do |format|
-      format.html
-      format.csv
-    end
+    #respond_to do |format|
+    #  format.html
+    #  format.csv
+    #end
   end  
 
   def new
