@@ -3,13 +3,13 @@ class EventsController < ApplicationController
     @event = Event.find(params[:id])
     if session[:event_id] != @event.id or session[:password] != @event.password
       redirect_to auth_event_path(@event.id)
+    else
+      @realms = Realm.where(:event_id => @event.id).includes("organization").order("organizations.name ASC")
+      respond_to do |format|
+        format.html
+        format.csv
+      end
     end
-    @realms = Realm.where(:event_id => @event.id).includes("organization").order("organizations.name ASC")
-
-    #respond_to do |format|
-    #  format.html
-    #  format.csv
-    #end
   end  
 
   def new
