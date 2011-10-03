@@ -9,5 +9,7 @@
   <li><h3>Name</h3><p><%= @order.name %></p></li>
   <li><h3>Option</h3><p><%= @order.option.price.nil? ? @order.option.name : "#{@order.option.name} [#{number_to_currency(@order.option.price)}]" %></p></li>
 </ul>
-<%= link_to "Pay Online", pay_order_path(@order), "data-role" => "button", :rel => "external" %>
+<p>Thank you for your order. It is now confirmed. You can either
+<%= link_to "Pay Online", pay_order_path(@order), "data-role" => "button", "data-inline" => "true", :rel => "external" %>
+or pay in person.</p>
 </div>
