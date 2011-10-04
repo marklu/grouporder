@@ -24,6 +24,14 @@ class RealmsController < ApplicationController
     end
   end
 
+  def manifest
+    @realm = Realm.find_by_token(params[:token])
+    unless @realm.nil?
+      @orders = Order.where(:realm_id => @realm.id).order("name ASC")
+      @optioncounts = @realm.option_counts
+    end
+  end
+
   def pay
     @realm = Realm.find_by_admin_token(params[:admin_token])
     @amount = params[:amount]

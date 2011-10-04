@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111003035654) do
+ActiveRecord::Schema.define(:version => 20111004053511) do
 
   create_table "checkout_references", :force => true do |t|
     t.integer  "realm_id"
@@ -37,6 +37,7 @@ ActiveRecord::Schema.define(:version => 20111003035654) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.decimal  "price",      :precision => 10, :scale => 2
+    t.integer  "limit"
   end
 
   add_index "options", ["event_id"], :name => "index_options_on_event_id"
