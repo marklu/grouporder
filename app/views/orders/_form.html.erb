@@ -10,7 +10,7 @@
   <% else %>
     <%= f.radio_button :option_id, option.id %>
   <% end %>
-  <%= f.label :option_id, option.price.nil? ? option.name : "#{option.name} [#{number_to_currency option.price}]", :value => option.id %>
+  <%= f.label :option_id, option.at_limit_for(@order.realm) ? "#{option.name} [Sold Out]" : option.price.nil? ? option.name : "#{option.name} [#{number_to_currency option.price}]", :value => option.id %>
 <% end %>
 <%= f.submit %>
 
