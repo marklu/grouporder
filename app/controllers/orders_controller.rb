@@ -46,7 +46,7 @@ class OrdersController < ApplicationController
   def new
     @realm = Realm.find(session[:realm_id])
     @options = Option.where(:event_id => @realm.event)
-    @order = Order.new(:realm_id => @realm.id, :name => session[:name])
+    @order = Order.new(:realm_id => @realm.id, :name => session[:name], :option_id => Option.find_by_event_id(@realm.event.id))
   end
 
   def edit
