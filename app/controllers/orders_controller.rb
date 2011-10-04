@@ -1,6 +1,12 @@
 class OrdersController < ApplicationController
   def create
-    @order = Order.new(params[:order])
+    possible_match = Order.find_by_name(params[:order][:name])
+    if possible_match.nil?
+      @order = Order.new(params[:order])
+    else
+      @order = possible_match
+      @order.update_attributes(params[:order])
+    end
     if @order.realm_id != session[:realm_id]
       raise Exception
     end
