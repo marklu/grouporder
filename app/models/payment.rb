@@ -11,6 +11,9 @@ class Payment < ActiveRecord::Base
       self.amount = response["amount"]
       self.description = "Online payment for #{subject}"
       self.save
+    elsif ["authorized", "started", "reserved"].include? response["state"]
+      self.amount = response["amount"]
+      self.save
     elsif response["state"] == "refunded"
       self.amount = 0.00
       self.description = "Refunded payment for #{subject} (#{reponse["amount"]})"
