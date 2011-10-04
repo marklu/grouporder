@@ -8,16 +8,16 @@ class Payment < ActiveRecord::Base
     response = HTTParty.get "#{WEPAY[:api_base]}/checkout", :headers => headers, :query => query
     print response
     if response["state"] == "captured"
-      amount = response["amount"]
-      description = "Online payment for #{subject}"
+      self.amount = response["amount"]
+      self.description = "Online payment for #{subject}"
       self.save
     elsif response["state"] == "refunded"
-      amount = 0.00
-      description = "Refunded payment for #{subject} (#{reponse["amount"]})"
+      self.amount = 0.00
+      self.description = "Refunded payment for #{subject} (#{reponse["amount"]})"
       self.save
     elsif response["state"] == "charged back"
-      amount = 0.00
-      description = "Chargeback for #{subject} (#{response["amount"]})"
+      self.amount = 0.00
+      self.description = "Chargeback for #{subject} (#{response["amount"]})"
       self.save
     elsif response["state"] == "cancelled" or response["state"] == "failed"
       self.delete
