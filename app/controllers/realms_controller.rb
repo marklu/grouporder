@@ -17,7 +17,7 @@ class RealmsController < ApplicationController
       @total = @realm.total_cost
       @paid = @realm.total_paid
       @balance = @realm.balance
-      @payments = @realm.payments
+      @payments = @realm.payments.map{|payment| payment.amount.zero? nil : payment}.compact
       if @realm.event.id == session[:event_id] and @realm.event.password == session[:password]
         @display_credit = true
       end
