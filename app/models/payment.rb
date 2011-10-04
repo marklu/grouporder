@@ -10,12 +10,15 @@ class Payment < ActiveRecord::Base
     if response["state"] == "captured"
       amount = response["amount"]
       description = "Online payment for #{subject}"
+      self.save
     elsif response["state"] == "refunded"
       amount = 0.00
       description = "Refunded payment for #{subject} (#{reponse["amount"]})"
+      self.save
     elsif response["state"] == "charged back"
       amount = 0.00
       description = "Chargeback for #{subject} (#{response["amount"]})"
+      self.save
     elsif response["state"] == "cancelled" or response["state"] == "failed"
       self.delete
     end
