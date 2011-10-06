@@ -16,7 +16,7 @@ class Payment < ActiveRecord::Base
       self.save
     elsif response["state"] == "refunded"
       self.amount = 0.00
-      self.description = "Refunded payment for #{subject} (#{reponse["amount"]})"
+      self.description = "Refunded payment for #{subject} (#{response["amount"]})"
       self.save
     elsif response["state"] == "charged back"
       self.amount = 0.00
