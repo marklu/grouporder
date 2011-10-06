@@ -1,0 +1,14 @@
+<div data-role="header">
+  <h1>Event Orders</h1>
+</div>
+<div data-role="content">
+  <h1><%= @event.name %></h1>
+  <% @realmorders.each_pair do |realm, orders| %>
+    <h2><%= realm.organization.name %></h2>
+    <ul data-role="listview" data-inset="true">
+    <% orders.each do |order| %>
+      <li><h3><%= order.name %></h3><p><%= order.option %></li>
+    <% end %>
+    </ul>
+  <% end %>
+</div>

@@ -55,6 +55,7 @@ class EventsController < ApplicationController
         @realmorders[realm] = Order.where(:realm_id => realm.id)
       end
       respond_to do |format|
+        format.html
         format.csv
       end
     end
