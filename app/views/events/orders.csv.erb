@@ -1,0 +1,19 @@
+<% 
+result = CSV.generate(:force_quotes => true) do |csv|
+
+  options = @event.options
+  csv << ["Organization", "Name", "Option"]
+
+  @realmorders.each_pair do |realm, orders|
+    orders.each do |order|
+      row = []
+      row << realm.organization.name
+      row << order.name
+      row << order.option.name
+      csv << row
+    end
+  end
+
+end
+%>
+<%= raw(result) %>

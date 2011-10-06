@@ -43,4 +43,20 @@ class EventsController < ApplicationController
       end
     end
   end
+
+  def orders
+    @event = Event.find(params[:id])
+    if session[:event_id] != @event.id or session[:password] != @event.password
+      redirect_to auth_event_path(@event.id)
+    else
+      @realms = Realm.where(:event_id => @event.id).includes("organization").order("organizations.name ASC")
+      @realmorders = {}
+      @realms.each() do |realm|
+        @realmorders[realm] = Order.where(:realm_id => realm.id)
+      end
+      respond_to do |format|
+        format.csv
+      end
+    end
+  end
 end

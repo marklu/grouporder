@@ -78,6 +78,7 @@ Shirtorder::Application.routes.draw do
     member do
       get 'auth'
       post 'auth'
+      get 'orders'
     end
   end
 
