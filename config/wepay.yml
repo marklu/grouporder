@@ -1,10 +1,10 @@
 development: &stage
   :api_base: 'https://stage.wepay.com/v2'
-  :access_token: "dcaf3b89469aa32107148125c9b3d458cb3d3084f93dc697900bf5e0a14df6d7"
+  :access_token: "" 
 
 test:
   <<: *stage
 
 production:
   :api_base: 'https://www.wepay.com/v2'
-  :access_token: "dbeb29264b5c58f95c6315f55d0c61574499a6bb45da1c14377abefe4b349d01"
+  :access_token: "" 
