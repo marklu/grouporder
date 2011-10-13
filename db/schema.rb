@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111004053511) do
+ActiveRecord::Schema.define(:version => 20111013050035) do
 
   create_table "checkout_references", :force => true do |t|
     t.integer  "realm_id"
@@ -29,6 +29,7 @@ ActiveRecord::Schema.define(:version => 20111004053511) do
     t.datetime "updated_at"
     t.integer  "wepay_account"
     t.string   "password"
+    t.string   "wepay_access_token"
   end
 
   create_table "options", :force => true do |t|
