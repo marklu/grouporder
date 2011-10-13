@@ -40,4 +40,6 @@
     <li><%= option.name %> <span class="ui-li-count"><%= optioncounts[option] %></span></li>
   <% end %>
 </ul>
+<h2>Wepay Authorization</h2>
+<%= link_to "Reauthorize Wepay", @event.auth_wepay_uri(auth_wepay_event_path(@event, :only_path => false)), "data-role" => "button", "data-icon" => "gear" %>
 </div>

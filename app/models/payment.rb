@@ -3,7 +3,7 @@ class Payment < ActiveRecord::Base
   belongs_to :order
 
   def confirm
-    headers = { "Authorization" => "Bearer #{WEPAY[:access_token]}" }
+    headers = { "Authorization" => "Bearer #{realm.event.wepay_access_token}" }
     query = { :checkout_id => checkout_id }
     response = HTTParty.get "#{WEPAY[:api_base]}/checkout", :headers => headers, :query => query
     print response

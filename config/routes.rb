@@ -79,6 +79,8 @@ Shirtorder::Application.routes.draw do
       get 'auth'
       post 'auth'
       get 'orders'
+      get 'auth_wepay'
+      post 'auth_wepay'
     end
   end
 

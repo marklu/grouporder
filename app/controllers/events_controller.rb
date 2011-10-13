@@ -44,6 +44,13 @@ class EventsController < ApplicationController
     end
   end
 
+  def auth_wepay
+    @event = Event.find(params[:id])
+    code = params[:code]
+    @event.auth_wepay(:code => code, :redirect_uri => auth_wepay_event_path(@event, :only_path => false))
+    redirect_to @event
+  end
+
   def orders
     @event = Event.find(params[:id])
     if session[:event_id] != @event.id or session[:password] != @event.password
