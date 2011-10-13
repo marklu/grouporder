@@ -47,6 +47,7 @@ class Payment < ActiveRecord::Base
               :redirect_uri => args[:redirect_uri],
               :amount => amount }
     response = HTTParty.get "#{WEPAY[:api_base]}/checkout/create", :headers => headers, :query => query
+    logger.info response
     result = Payment.create :realm => realm, :order => order, :description => "Pending payment for #{description}", :amount => 0.0, :checkout_id => response["checkout_id"]
     return response["checkout_uri"]
   end
