@@ -39,7 +39,7 @@ class Payment < ActiveRecord::Base
     unless args[:amount].nil?
       amount = args[:amount]
     end
-    headers = { "Authorization" => "Bearer #{WEPAY[:access_token]}" }
+    headers = { "Authorization" => "Bearer #{realm.event.wepay_access_token}" }
     query = { :account_id => realm.event.wepay_account,
               :short_description => "#{realm.event.name}, #{description}",
               :type => "GOODS",

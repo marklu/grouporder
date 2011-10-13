@@ -1,10 +1,8 @@
 development: &stage
   :api_base: 'https://stage.wepay.com/v2'
-  :access_token: "" 
 
 test:
   <<: *stage
 
 production:
   :api_base: 'https://www.wepay.com/v2'
-  :access_token: "" 
